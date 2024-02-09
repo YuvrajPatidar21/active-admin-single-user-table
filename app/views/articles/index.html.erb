@@ -1,0 +1,26 @@
+<h1>All Articles</h1>
+<% if can? :create, Article %>
+  <div>
+    <%= link_to 'New Article', new_article_path, class: 'btn btn-primary mb-3 end-0' %>
+  </div>
+<% end %>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.description[0,20]...  %></td>
+          <td><%= button_to 'Show', article, method: :get,class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

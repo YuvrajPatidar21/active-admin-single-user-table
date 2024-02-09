@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg bg-warning">
+  <div class="container-fluid">
+    <%= link_to "Blog Application", root_path, method: "get",class:"navbar-brand active ms-5" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5 ">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link active" %>
+          
+        </li>
+        <li class="nav-item">
+          <%= link_to "Article", articles_path,class:"nav-link active"  %>
+        </li> 
+      <% if current_user %>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Sign up", users_sign_up_path, class:"nav-link active"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign In", users_sign_in_path, class:"nav-link active"  %>
+        </li>
+      <% end %>
+      </ul>
+      <ul class="navbar-nav d-flex me-5">
+          <% if current_user %>
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= current_user&.email %>
+              </a>
+              <ul class="dropdown-menu">
+                <li><hr class="dropdown-divider"></li>
+                <li><%= link_to "Log Out",users_sign_out_path, 'data-turbo-method': :delete, class: "dropdown-item " %>
+              </ul>
+            </li>    
+          <% end %>  
+        </ul>
+    </div>
+  </div>
+</nav>

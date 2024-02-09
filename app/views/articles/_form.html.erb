@@ -1,0 +1,36 @@
+<div class="col-lg-6 mt-5 mx-lg-auto mt-5"></div>
+  <div class="card shadow">
+    <div class="card-header bg-warning ">
+      <%= yield :add_hotel_heading %>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: article, class:'row') do |form| %>
+        <% if article.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+            <ul>
+              <% article.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div>
+          <%= form.label :title, class: "form-label" %>
+          <%= form.text_field :title, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div>
+          <%= form.label :description, class:"form-label" %>
+          <%= form.text_area :description, class:"form-control" %>
+        </div>
+
+        <div class="mt-4 "> 
+          <%= form.submit class: "btn btn-dark" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

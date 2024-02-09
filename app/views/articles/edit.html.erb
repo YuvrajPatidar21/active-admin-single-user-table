@@ -1,0 +1,11 @@
+<% content_for :add_hotel_heading do  %>
+  <h2 class="card-title text-center ">Edit Article</h2>
+<% end %>
+<%= render "form", article: @article %>
+
+<br>
+
+<div>
+  <%= link_to "Show this article", @article %> |
+  <%= link_to "Back to articles", articles_path %>
+</div>

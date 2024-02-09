@@ -1,0 +1,14 @@
+<div class="card mb-3 mt-5 ">
+  <div class="card-body">
+    <h5 class="card-title"><%= @article.title %></h5>
+    <p class="card-text"><%= @article.description %></p>
+    <% if can? :edit, @article %>
+      <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-primary m-2" %>
+    <% end %>
+
+    <%= link_to "Back to articles", articles_path, class: "btn btn-info m-2"  %>
+    <% if can? :destroy, @article %>
+      <%= button_to "Destroy this article", @article, method: :delete, class: "btn btn-danger m-2"  %>
+    <% end %>
+  </div>
+</div>
